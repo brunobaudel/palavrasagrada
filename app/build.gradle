@@ -1,0 +1,86 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.mobsky.palavrasagrada'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId DefaultsConfig.applicationId
+        minSdk DefaultsConfig.minSdk
+        targetSdk DefaultsConfig.targetSdk
+        versionCode DefaultsConfig.versionCode
+        versionName DefaultsConfig.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', 'BASE_URL', '\"https://api.github.com/\"'
+        }
+
+        debug{
+            buildConfigField 'String', 'BASE_URL', '\"https://api.github.com/\"'
+        }
+
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = DefaultsConfig.jvmTargetVersion
+    }
+
+    buildFeatures {
+        compose true
+        buildConfig true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = DefaultsConfig.kotlinCompilerExtensionVersion
+    }
+}
+
+dependencies {
+
+    implementation project(path: ':network')
+    implementation project(path: ':navigation')
+
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+
+    implementation Koin.koinAndroid
+    implementation Koin.koinAndroidCompat
+    implementation Koin.koinAndroidxWorkmanager
+
+    implementation Retrofit.retrofitCore
+
+    def composeBom = platform(Compose.bom)
+    implementation composeBom
+
+    implementation Compose.material3
+    implementation Compose.foundation
+    implementation Compose.ui
+    implementation Compose.preview
+    debugImplementation Compose.tooling
+    implementation Compose.iconsCore
+    implementation Compose.windowSizeClass
+    // Optional - Integration with activities
+    implementation Compose.activityCompose
+    // Optional - Navigation
+    implementation Compose.navigationCompose
+}
