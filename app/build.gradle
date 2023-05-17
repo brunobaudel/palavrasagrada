@@ -22,11 +22,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField 'String', 'BASE_URL', '\"https://api.github.com/\"'
+            buildConfigField 'String', 'BASE_URL', '\"https://www.abibliadigital.com.br/\"'
         }
 
         debug{
-            buildConfigField 'String', 'BASE_URL', '\"https://api.github.com/\"'
+            buildConfigField 'String', 'BASE_URL', '\"https://www.abibliadigital.com.br/\"'
         }
 
     }
@@ -54,6 +54,7 @@ dependencies {
 
     implementation project(path: ':network')
     implementation project(path: ':navigation')
+    implementation project(path: ':home')
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'

@@ -16,3 +16,4 @@ rootProject.name = "PalavraSagrada"
 include ':app'
 include ':network'
 include ':navigation'
+include ':home'
