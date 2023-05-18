@@ -8,7 +8,7 @@ object DefaultsConfig {
     const val jvmTargetVersion = "17"
 }
 
-object Versions {
+private object Versions {
     const val koinVersion = "3.2.2"
     const val koinAndroidVersion = "3.3.0"
     const val koinAndroidComposeVersion = "3.4.4"
@@ -26,6 +26,7 @@ object Versions {
     const val androidXAppCompatVersion = "1.6.1"
     const val androidMaterialVersion = "1.9.0"
     const val glideComposeVersion = "1.0.0-alpha.3"
+    const val roomVersion = "2.4.1"
 }
 
 object Koin {
@@ -76,8 +77,10 @@ object Compose {
     const val tooling = "androidx.compose.ui:ui-tooling"
     const val iconsCore = "androidx.compose.material:material-icons-core"
     const val windowSizeClass = "androidx.compose.material3:material3-window-size-class"
-    const val activityCompose = "androidx.activity:activity-compose:${Versions.composeActivityVersion}"
-    const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.composeViewModelVersion}"
+    const val activityCompose =
+        "androidx.activity:activity-compose:${Versions.composeActivityVersion}"
+    const val viewModelCompose =
+        "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.composeViewModelVersion}"
     const val livedataCompose = "androidx.compose.runtime:runtime-livedata"
     const val navigationCompose =
         "androidx.navigation:navigation-compose:${Versions.composeNavigationVersion}"
@@ -88,10 +91,16 @@ object AndroidX {
     const val appCompat = "androidx.appcompat:appcompat:${Versions.androidXAppCompatVersion}"
 }
 
-object Android{
+object Android {
     const val material = "com.google.android.material:material:${Versions.androidMaterialVersion}"
 }
 
-object Glide{
+object Glide {
     const val glideCompose = "com.github.bumptech.glide:compose:${Versions.glideComposeVersion}"
+}
+
+object Room {
+    const val roomRuntime = "androidx.room:room-runtime:${Versions.roomVersion}"
+    const val roomKtx = "androidx.room:room-ktx:${Versions.roomVersion}"
+    const val roomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
 }

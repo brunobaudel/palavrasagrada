@@ -61,11 +61,11 @@ fun HomeView(viewModel: HomeScreenViewModel, onClickNavigation: (navigate: Navig
     val uiState by viewModel.uiState.collectAsState()
 
     if (uiState.taskState == TaskState.NotStarted) {
-        viewModel.getUsers()
+        viewModel.getBooks()
     }
 
     ScreenStateView(uiState,
-        tryAgainCallBack = { viewModel.getUsers() },
+        tryAgainCallBack = { viewModel.getBooks() },
         content = {
 
         }

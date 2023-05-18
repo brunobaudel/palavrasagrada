@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -50,7 +51,7 @@ dependencies {
     implementation(project(mapOf("path" to ":navigation")))
     implementation(project(mapOf("path" to ":network")))
 
-    implementation("androidx.core:core-ktx:1.8.0")
+    implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     testImplementation("junit:junit:4.13.2")
@@ -66,10 +67,14 @@ dependencies {
 
     implementation(Gson.gsonCore)
 
+    implementation(Room.roomRuntime)
+    implementation(Room.roomKtx)
+    annotationProcessor(Room.roomCompiler)
+    kapt(Room.roomCompiler)
+
     //Compose
     val composeBom = platform(Compose.bom)
     implementation(composeBom)
-//    androidTestImplementation(composeBom)
 
     implementation(Compose.material3)
     implementation(Compose.material)

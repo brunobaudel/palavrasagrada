@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Abbrev(
     @SerializedName("en")
-    val en: String? = "",
+    val en: String? = null,
     @SerializedName("pt")
-    val pt: String? = ""
+    val pt: String? = null
 )

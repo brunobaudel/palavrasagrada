@@ -7,13 +7,13 @@ data class BookResponseItem(
     @SerializedName("abbrev")
     val abbrev: Abbrev? = Abbrev(),
     @SerializedName("author")
-    val author: String? = "",
+    val author: String? = null,
     @SerializedName("chapters")
-    val chapters: Int? = 0,
+    val chapters: Int? = null,
     @SerializedName("group")
-    val group: String? = "",
+    val group: String? = null,
     @SerializedName("name")
-    val name: String? = "",
+    val name: String? = null,
     @SerializedName("testament")
-    val testament: String? = ""
+    val testament: String? = null
 )

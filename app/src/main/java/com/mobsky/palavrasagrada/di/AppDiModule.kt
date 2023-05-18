@@ -5,6 +5,7 @@ import com.mobsky.home.di.homeModules
 import com.mobsky.network.StartNetworkParameters
 import com.mobsky.network.startNetwork
 import com.mobsky.palavrasagrada.BuildConfig
+import com.mobsky.palavrasagrada.database.PalavraSagradaDatabase
 import org.koin.core.module.Module
 import org.koin.core.parameter.parametersOf
 import org.koin.dsl.module
@@ -21,6 +22,10 @@ val appDiModule = module {
         get<Retrofit> {
             parametersOf(startNetworkParameters)
         }.create(ABibliaDigitalApi::class.java)
+    }
+
+    single {
+        PalavraSagradaDatabase.getDatabase(context = get()).aBibliaDigitalDAO()
     }
 
 }
