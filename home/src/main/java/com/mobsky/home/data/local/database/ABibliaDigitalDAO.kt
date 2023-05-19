@@ -13,6 +13,9 @@ interface ABibliaDigitalDAO {
     @Query("SELECT * FROM book_table ORDER BY testament ASC")
     fun getBooks(): BooksEntity
 
+    @Query("SELECT * FROM book_table ORDER BY RANDOM() LIMIT 1")
+    fun getBookRandom(): BookEntity
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertBook(books: List<BookEntity>): List<Long>
 

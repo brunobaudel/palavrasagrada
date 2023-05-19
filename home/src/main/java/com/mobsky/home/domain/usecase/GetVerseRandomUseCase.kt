@@ -2,12 +2,13 @@ package com.mobsky.home.domain.usecase
 
 import com.mobsky.home.data.repository.ABibliaDigitalRepository
 import com.mobsky.home.data.repository.Books
+import com.mobsky.home.domain.model.Verse
 
-class GetBooksUseCase(
+class GetVerseRandomUseCase(
     private val aBibliaDigitalRepository: ABibliaDigitalRepository
-) : UseCase<Books, Unit>() {
+) : UseCase<Verse, Unit>() {
 
-    override suspend fun run(params: Unit): Books = let {
-        aBibliaDigitalRepository.getBooks()
+    override suspend fun run(params: Unit): Verse = let {
+        aBibliaDigitalRepository.getVerseRandom()
     }
 }

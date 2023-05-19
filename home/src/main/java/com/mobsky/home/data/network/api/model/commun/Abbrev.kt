@@ -1,4 +1,4 @@
-package com.mobsky.home.data.network.api.model.book
+package com.mobsky.home.data.network.api.model.commun
 
 import com.google.gson.annotations.SerializedName
 

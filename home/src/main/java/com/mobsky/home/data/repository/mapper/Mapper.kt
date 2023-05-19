@@ -2,11 +2,13 @@ package com.mobsky.home.data.repository.mapper
 
 import com.mobsky.home.data.local.database.model.BookEntity
 import com.mobsky.home.data.local.database.model.BooksEntity
-import com.mobsky.home.data.network.api.model.book.BookResponse
+import com.mobsky.home.data.network.api.model.book.BooksResponse
+import com.mobsky.home.data.network.api.model.verse_book.VerseBookResponse
 import com.mobsky.home.data.repository.Books
 import com.mobsky.home.domain.model.Book
+import com.mobsky.home.domain.model.Verse
 
-fun BookResponse?.toBooks(): Books =
+fun BooksResponse?.toBooks(): Books =
     this?.map { bookResponse ->
         Book(
             author = bookResponse.author.orEmpty(),
@@ -31,7 +33,6 @@ fun BooksEntity?.toBooks(): Books =
         )
     } ?: listOf()
 
-
 fun Books?.toBooksEntity(): BooksEntity =
     this?.map { book ->
         BookEntity(
@@ -44,3 +45,27 @@ fun Books?.toBooksEntity(): BooksEntity =
             abrevPt = book.abrevPt
         )
     } ?: listOf()
+
+fun BookEntity?.toBook(): Book =
+    this?.let { booksEntity ->
+        Book(
+            author = booksEntity.author,
+            chapters = booksEntity.chapters,
+            group = booksEntity.group,
+            name = booksEntity.name,
+            testament = booksEntity.testament
+        )
+    } ?: Book()
+
+fun VerseBookResponse?.toVerse(testament: String): Verse =
+    this?.let { verseBook ->
+        Verse(
+            book = verseBook.bookResponse?.name.orEmpty(),
+            abrevPt = verseBook.bookResponse?.abbrev?.pt.orEmpty(),
+            testament = testament,
+            chapters = verseBook.chapter ?: 0,
+            verseNumber = verseBook.number ?: 0,
+            text = verseBook.text.orEmpty()
+        )
+    } ?: Verse()
+    

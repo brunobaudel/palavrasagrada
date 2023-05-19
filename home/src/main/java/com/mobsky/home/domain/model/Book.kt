@@ -8,4 +8,8 @@ data class Book(
     val testament: String = "",
     val abrevEn: String = "",
     val abrevPt: String = ""
-)
+){
+    fun getRandomChapter():Int = let{
+        1
+    }
+}

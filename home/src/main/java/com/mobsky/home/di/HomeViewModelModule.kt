@@ -7,7 +7,7 @@ import org.koin.dsl.module
 internal val homeViewModelModules = module {
 
     viewModel {
-        HomeScreenViewModel(getUserUseCase = get())
+        HomeScreenViewModel(getBooksUseCase = get())
     }
 
 }
