@@ -7,7 +7,6 @@ import com.mobsky.network.util.ResultWrapper
 import com.mobsky.network.util.safeApiCall
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
-import retrofit2.http.Path
 
 class ABibliaDigitalNetworkImpl(
     private val gitHubApi: ABibliaDigitalApi,
@@ -33,7 +32,7 @@ class ABibliaDigitalNetworkImpl(
         safeApiCall(
             dispatcher = dispatcher,
             apiCall = {
-                gitHubApi.getVerseToChapterRandom(version, abbrev)
+                gitHubApi.getVerseToChapterRandom(abbrev = abbrev)
             },
             transformError = {
 //                Gson().fromJson(it, GitErrorModelResponse::class.java).message

@@ -53,7 +53,9 @@ fun BookEntity?.toBook(): Book =
             chapters = booksEntity.chapters,
             group = booksEntity.group,
             name = booksEntity.name,
-            testament = booksEntity.testament
+            testament = booksEntity.testament,
+            abrevEn = booksEntity.abrevEn,
+            abrevPt = booksEntity.abrevPt
         )
     } ?: Book()
 

@@ -2,8 +2,9 @@ package com.mobsky.home.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mobsky.home.data.repository.Books
+import com.mobsky.home.domain.model.Verse
 import com.mobsky.home.domain.usecase.GetBooksUseCase
+import com.mobsky.home.domain.usecase.GetVerseRandomUseCase
 import com.mobsky.home.domain.usecase.invoke
 import com.mobsky.home.presentation.util.TaskState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,7 +13,10 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class HomeScreenViewModel(private val getBooksUseCase: GetBooksUseCase) : ViewModel() {
+class HomeScreenViewModel(
+    private val getBooksUseCase: GetBooksUseCase,
+    private val getVerseRandom: GetVerseRandomUseCase
+) : ViewModel() {
 
     private val _uiState = MutableStateFlow(HomeScreenState())
     val uiState: StateFlow<HomeScreenState> = _uiState.asStateFlow()
@@ -21,19 +25,20 @@ class HomeScreenViewModel(private val getBooksUseCase: GetBooksUseCase) : ViewMo
         viewModelScope.launch {
             try {
                 updateScreenStateProgress()
-                val books = getBooksUseCase.invoke()
-                updateScreenStateSuccess(books)
-            }catch (e: Exception){
+                getBooksUseCase.invoke()
+                val verse = getVerseRandom.invoke()
+                updateScreenStateSuccess(verse)
+            } catch (e: Exception) {
                 updateScreenStateError(e)
             }
         }
     }
 
-    private fun updateScreenStateSuccess(users: Books) {
+    private fun updateScreenStateSuccess(verse: Verse) {
         _uiState.update { currentState ->
             currentState.copy(
                 taskState = TaskState.Complete,
-                books = users
+                verse = verse
             )
         }
     }

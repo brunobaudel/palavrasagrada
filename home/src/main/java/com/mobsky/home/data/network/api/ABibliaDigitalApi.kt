@@ -16,10 +16,10 @@ interface ABibliaDigitalApi {
     /**
      * Recupera um versiculo aleatorio do capitulo
      */
-    @GET("verses/:version/:abbrev/random")
+    @GET("verses/{version}/{abbrev}/random")
     suspend fun getVerseToChapterRandom(
-        @Path("version") version: String,
-        @Path("abbrev") abbrev: String = "nvi"
+        @Path("version") version: String = "nvi",
+        @Path("abbrev") abbrev: String
     ): VerseBookResponse
 
 }
